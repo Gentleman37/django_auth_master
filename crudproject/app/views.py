@@ -2,16 +2,16 @@ from django.shortcuts import render, redirect
 from .models import Post, Comment
 from django.contrib.auth.models import User
 from django.contrib import auth
-from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def home(request):
     posts = Post.objects.all()
-
     return render(request, 'home.html', { 'posts': posts })
 
-@login_required
 def new(request):
+    if (request.user.pk == None):
+        return render(request, 'registration/login.html', { 'next': '/new' })
+
     if request.method == 'POST':
         new_post = Post.objects.create(
             title = request.POST['title'],
