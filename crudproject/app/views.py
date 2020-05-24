@@ -10,7 +10,7 @@ def home(request):
 
 def new(request):
     if (request.user.pk == None):
-        return render(request, 'registration/login.html', { 'next': '/new' })
+        return redirect('login')
 
     if request.method == 'POST':
         new_post = Post.objects.create(
