@@ -19,7 +19,6 @@ from app import views
 
 urlpatterns = [
     # auth
-    path('accounts/', include('django.contrib.auth.urls')),
     path('registration/signup', views.signup, name="signup"),
     path('registration/login', views.login, name="login"),
     path('registration/logout', views.logout, name="logout"),
