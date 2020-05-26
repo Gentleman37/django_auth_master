@@ -62,7 +62,7 @@ def signup(request):
             error = 'username이 이미 존재합니다'
             return render(request, 'registration/signup.html', { 'error' : error })
 
-        new_user = User.objects.create(
+        new_user = User.objects.create_user(
             username = request.POST['username'],
             password = request.POST['password']
         )
